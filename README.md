@@ -33,8 +33,8 @@ This tool helps you compare Azure managed disk SKUs and their monthly prices (in
 5. Prepare a `disks.json` file in the repo root. Example format:
    ```json
    [
-     {"diskname": "myDisk1", "resourcegroup": "myResourceGroup1"},
-     {"diskname": "myDisk2", "resourcegroup": "myResourceGroup2"}
+     {"diskname": "myDisk1", "resourcegroup": "myResourceGroup1", "subscription": "mySubscription1"},
+     {"diskname": "myDisk2", "resourcegroup": "myResourceGroup2", "subscription": "mySubscription1"}
    ]
    ```
 

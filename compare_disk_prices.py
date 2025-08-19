@@ -3,14 +3,15 @@ import json
 from tabulate import tabulate
 from AzureRetailPricesApi import AzureRetailPricesClient
 
-DEBUG=True
+DEBUG=None
 
 # Helper to run az cli and get disk details
-def get_disk_details(disk_name, resource_group):
+def get_disk_details(disk_name, resource_group, subscription):
     cmd = [
         "az", "disk", "show",
         "--name", disk_name,
         "--resource-group", resource_group,
+        "--subscription", subscription,
         "--output", "json"
     ]
     if DEBUG:
@@ -240,16 +241,17 @@ def main():
     # Read disks from disks.json and take the first five
     with open("disks.json") as f:
         all_disks = json.load(f)
-    disks = all_disks
+    disks = all_disks[:2]
     table = []
     for idx, disk in enumerate(disks, 1):
         # Support both 'diskname'/'resourcegroup' and 'name'/'resource_group' keys
         disk_name = disk.get("diskname") or disk.get("name")
         resource_group = disk.get("resourcegroup") or disk.get("resource_group")
+        subscription = disk.get("subscription") or disk.get("subscription")
         if DEBUG:
             print(f"\n[INFO] Processing disk {idx}: {disk_name} in resource group {resource_group}")
         try:
-            details = get_disk_details(disk_name, resource_group)
+            details = get_disk_details(disk_name, resource_group, subscription)
         except Exception as e:
             if DEBUG:
                 print(f"[WARN] Disk '{disk_name}' in resource group '{resource_group}' not found or error occurred: {e}. Marking as N/A.")
