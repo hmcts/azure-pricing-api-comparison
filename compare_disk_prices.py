@@ -241,7 +241,7 @@ def main():
     # Read disks from disks.json and take the first five
     with open("disks.json") as f:
         all_disks = json.load(f)
-    disks = all_disks[:2]
+    disks = all_disks
     table = []
     for idx, disk in enumerate(disks, 1):
         # Support both 'diskname'/'resourcegroup' and 'name'/'resource_group' keys
