@@ -44,7 +44,6 @@ Run the script:
 python compare_disk_prices.py
 ```
 
-- By default, the script processes the first 8 disks in `disks.json`.
 - Set `DEBUG=True` in the script for verbose output.
 - The output is a table comparing disk size, SKU, IOPS, throughput, and prices for each disk and SKU type.
 
