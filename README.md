@@ -81,7 +81,7 @@ saName            rgName           StorageV2         Standard_LRS uksouth  12.34
 - If a resource is not found in Azure, the script will output a row with `N/A` for all columns.
 - For disks and blob storage, the tool will infer the performance tier or redundancy if it is not set in Azure.
 - Prices are converted from USD to GBP using a fixed rate (0.75).
-- Blob storage pricing can be forced to use ZRS for comparison, regardless of the current redundancy.
+- Blob storage pricing, the script is currently coded to use the ZRS redundancy type by default.
 - Progress is saved after each resource, so the script can resume if interrupted.
 
 ## Extending
