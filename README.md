@@ -47,6 +47,12 @@ python compare_disk_prices.py
 - Set `DEBUG=True` in the script for verbose output.
 - The output is a table comparing disk size, SKU, IOPS, throughput, and prices for each disk and SKU type.
 
+```
+Disk_Name                                            Size_GB    SKU          IOPS    Throughput_MBps    Existing_Price    Standard_Price    PremiumV2_Price
+--------------------------------------------------  ---------  -----------  ------  -----------------  ----------------  ----------------  -----------------
+DISK-NAME-01                                        1000       Premium_LRS  5000    200                122.661000        63.360000         80.879438
+```
+
 ## Notes
 - If a disk is not found in Azure, the script will output a row with `N/A` for all columns.
 - For Premium and Standard SSD disks, the tool will infer the performance tier if it is not set in Azure.
