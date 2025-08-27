@@ -48,6 +48,21 @@ This toolkit helps you compare Azure SKUs and their monthly prices (in GBP) for 
          ]
          ```
 
+   You can retrieve the data you need using the following commands.
+
+   For storage accounts:
+
+   ```
+   az graph query -q "Resources | where type == 'microsoft.storage/storageaccounts' | where sku.name in ('Premium_LRS', 'Premium_ZRS', 'Standard_GRS', 'Standard_RAGRS') | project name, resourceGroup, subscriptionId, sku.name" --first 1000 -o json | jq '.data' > blobs.json
+   ```
+
+   For disks:
+
+   ```
+   az graph query -q "Resources | where type == 'microsoft.compute/disks' | where sku.name in ('Premium_LRS', 'Premium_ZRS', 'Standard_GRS', 'Standard_RAGRS') | project name, resourceGroup, subscriptionId, sku.name" --first 1000 -o json | jq '.data' > disks.json
+   ```
+
+
 ## Usage
 Run the relevant script for your resource type:
 

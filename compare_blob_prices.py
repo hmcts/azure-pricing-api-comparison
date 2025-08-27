@@ -138,9 +138,9 @@ def main():
     table = load_progress()
     processed_keys = set(row_key(row) for row in table)
     for acc in accounts:
-        name = acc["storageAccountName"]
-        rg = acc["resourcegroup"]
-        sub = acc["subscription"]
+        name = acc["name"]
+        rg = acc["resourceGroup"]
+        sub = acc["subscriptionId"]
         key = f"{name}|{rg}"
         if key in processed_keys:
             if DEBUG:

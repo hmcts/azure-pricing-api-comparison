@@ -246,8 +246,8 @@ def main():
     for idx, disk in enumerate(disks, 1):
         # Support both 'diskname'/'resourcegroup' and 'name'/'resource_group' keys
         disk_name = disk.get("diskname") or disk.get("name")
-        resource_group = disk.get("resourcegroup") or disk.get("resource_group")
-        subscription = disk.get("subscription") or disk.get("subscription")
+        resource_group = disk.get("resourcegroup") or disk.get("resourceGroup")
+        subscription = disk.get("subscription") or disk.get("subscriptionId")
         if DEBUG:
             print(f"\n[INFO] Processing disk {idx}: {disk_name} in resource group {resource_group}")
         try:
